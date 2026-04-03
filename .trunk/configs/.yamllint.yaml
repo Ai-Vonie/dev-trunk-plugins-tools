@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+
+# yamllint configuration
+# Docs: https://yamllint.readthedocs.io/
+# GitHub: https://github.com/adrienverge/yamllint
+# Configuration file: https://yamllint.readthedocs.io/en/stable/configuration.html
+
+extends: relaxed
+
+rules:
+  indentation:
+    spaces: 2
+  line-length:
+    max: 100
+  quoted-strings:
+    required: only-when-needed
+    extra-allowed: ["{|}", "^[0-9]{2}:[0-9]{2}$"]
+  empty-values:
+    forbid-in-block-mappings: true
+    forbid-in-flow-mappings: true
+  key-duplicates: {}
+  octal-values:
+    forbid-implicit-octal: true

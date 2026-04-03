@@ -1,0 +1,10 @@
+# Taplo configuration
+# Docs: https://taplo.tamasfe.dev/
+# GitHub: https://github.com/tamasfe/taplo
+# Configuration file: https://taplo.tamasfe.dev/configuration/file.html
+
+[formatting]
+column_width        = 100
+allowed_blank_lines = 1
+align_entries       = true
+indent_string       = "    "

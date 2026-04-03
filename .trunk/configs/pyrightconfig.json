@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/pyright/main/packages/vscode-pyright/schemas/pyrightconfig.schema.json",
+
+  "// 1": "Pyright configuration",
+  "// 2": "Docs: https://microsoft.github.io/pyright/",
+  "// 3": "GitHub: https://github.com/microsoft/pyright",
+  "// 4": "Configuration file: https://github.com/microsoft/pyright/blob/main/docs/configuration.md",
+
+  "typeCheckingMode": "strict",
+  "pythonVersion": "3.14",
+  "pythonPlatform": "All"
+}

@@ -1,0 +1,298 @@
+# yaml-language-server: $schema=https://static.trunk.io/pub/trunk-yaml-schema.json
+# Share config between codebases:
+# https://docs.trunk.io/code-quality/overview/getting-started/configuration/plugins/external-repositories
+version: 0.1
+required_trunk_version: ">=1.7.1-beta.9"
+
+# This file controls the behavior of Trunk: https://docs.trunk.io/cli
+cli:
+  # https://docs.trunk.io/code-quality/overview/getting-started/configuration#cli
+  options:
+    - commands: [check] # apply only to `trunk check`
+      args: --fix
+
+# Many linters and tools depend on runtimes - configure them here. (https://docs.trunk.io/runtimes)
+runtimes:
+  enabled:
+    - go@1.25.6
+    - node@22.16.0
+    - python@3.10.8
+
+# This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
+lint:
+  disabled:
+    - markdownlint
+    - eslint
+    - sort-package-json
+    - nancy
+    # https://github.com/accurics/terrascan
+    - terrascan
+
+    # Python
+    - black
+    - isort
+    - flake8
+    - pylint
+    - mypy
+
+    # https://github.com/bridgecrewio/checkov
+    - checkov
+    # https://github.com/aws-cloudformation/cfn-lint
+    - cfnlint
+    # https://github.com/hadolint/hadolint
+    - hadolint
+    # https://github.com/aquasecurity/trivy
+    - trivy
+    # https://github.com/google/google-java-format
+    - google-java-format
+
+  # By sourcing this plugin, repos will enable these linters
+  enabled:
+    # Security & Vulnerability & Secret Scanners
+    # OSV-Scanner: https://google.github.io/osv-scanner/ | https://github.com/google/osv-scanner
+    - osv-scanner@2.3.5
+    # TruffleHog: https://docs.trufflesecurity.com/ | https://github.com/trufflesecurity/trufflehog
+    - trufflehog@3.94.2
+    # gitleaks: https://github.com/gitleaks/gitleaks
+    # - gitleaks@8.30.1 # ? Note: Unknown error when try intall tool
+    # Semgrep: https://semgrep.dev/ | https://github.com/returntocorp/semgrep
+    # - semgrep@1.156.0 # ? Note: No Windows support
+
+    # GitHub Actions
+    # Docs: https://rhysd.github.io/actionlint/ | https://github.com/rhysd/actionlint
+    - actionlint@1.7.12
+
+    # YAML
+    # Docs: https://yamllint.readthedocs.io/ | https://github.com/adrienverge/yamllint
+    - yamllint@1.38.0
+
+    # Markdown
+    # trunk-ignore(yamllint/line-length)
+    # Docs: https://github.com/DavidAnson/markdownlint | https://github.com/DavidAnson/markdownlint-cli2
+    - markdownlint-cli2@0.22.0:
+        commands: [lint, fix]
+    # trunk-ignore(yamllint/line-length)
+    # Docs: https://github.com/tcort/markdown-link-check#config-file-format | https://github.com/tcort/markdown-link-check
+    # - markdown-link-check@3.14.2 # ? Note: No support config file
+
+    # Java/XML/SQL/Prisma/Shell/Tailwind/Others
+    # Docs: https://prettier.io/ | https://github.com/prettier/prettier
+    - prettier@3.8.1:
+        packages:
+          # Java: https://github.com/jhipster/prettier-java
+          - prettier-plugin-java@2.8.1
+          # package.json: https://github.com/matzkoh/prettier-plugin-packagejson
+          - prettier-plugin-packagejson@3.0.2
+          # XML: https://github.com/prettier/plugin-xml
+          - "@prettier/plugin-xml@3.4.2"
+          # Prisma: https://github.com/avocadowastaken/prettier-plugin-prisma
+          - prettier-plugin-prisma@5.0.0
+          # Shell: https://github.com/un-ts/prettier/tree/master/packages/sh
+          - prettier-plugin-sh@0.18.0
+          # SQL: https://github.com/un-ts/prettier/tree/master/packages/sql
+          - prettier-plugin-sql@0.20.0
+          # Tailwind CSS: https://github.com/tailwindlabs/prettier-plugin-tailwindcss
+          - prettier-plugin-tailwindcss@0.7.2
+
+    # TypeScript/JavaScript/JSX/JSON
+    # Docs: https://biomejs.dev/ | https://github.com/biomejs/biome
+    - biome@2.4.10
+
+    # Stylelint CSS
+    - stylelint@17.6.0:
+        packages:
+          - stylelint-config-standard-scss@17.0.0
+          - stylelint-config-clean-order@8.0.1
+
+    # Python
+    # Docs: https://docs.astral.sh/ruff/ | https://github.com/astral-sh/ruff
+    - ruff@0.15.8
+    # Docs: https://microsoft.github.io/pyright/ | https://github.com/microsoft/pyright
+    - pyright@1.1.408
+    # Docs: https://bandit.readthedocs.io/en/latest/ | https://github.com/PyCQA/bandit
+    - bandit@1.9.4
+
+    # Rust
+    - rustfmt@1.92.0
+    - clippy@1.92.0
+
+    # C/C++
+    # (C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C#)
+    # trunk-ignore(yamllint/line-length)
+    # Docs: https://clang.llvm.org/docs/ClangFormat.html | https://github.com/llvm/llvm-project/tree/main/clang/tools/clang-format
+    # - clang-format@17.0.1
+    # trunk-ignore(yamllint/line-length)
+    # Docs: https://clang.llvm.org/extra/clang-tidy/ | https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clang-tidy
+    # - clang-tidy@17.0.1
+    # - pragma-once
+
+    # TOML Formatter
+    # Docs: https://taplo.tamasfe.dev/ | https://github.com/tamasfe/taplo
+    - taplo@0.10.0
+
+    # Lua
+    # Docs: https://github.com/JohnnyMorganz/StyLua
+    - stylua@2.4.0
+
+    # Go
+    # - gofmt@1.20.4
+    # - golangci-lint2@2.11.4
+
+    # Dart
+    # - dart@3.11.4
+
+    # Shell scripts
+    # Docs: https://www.shellcheck.net/ | https://github.com/koalaman/shellcheck
+    # - shellcheck@0.11.0 # ? Note: No Windows support
+    # Docs: https://pkg.go.dev/mvdan.cc/sh/v3 | https://github.com/mvdan/sh
+    # - shfmt@3.12.0 # ? Note: Unknown error when try intall tool
+
+    # .env files
+    # Docs: https://dotenv-linter.github.io/ | https://github.com/dotenv-linter/dotenv-linter
+    - dotenv-linter@4.0.0
+
+    # Renovate
+    # Docs: https://docs.renovatebot.com/ | https://github.com/renovatebot/renovate
+    - renovate@43.102.8
+
+    # SVG optimization
+    # Docs: https://svgo.dev/ | https://github.com/svg/svgo
+    - svgo@4.0.1
+
+    # Image optimization
+    # Docs: https://github.com/shssoichiro/oxipng
+    - oxipng@10.1.0
+
+    # Whitespace issues
+    # trunk-ignore(yamllint/line-length)
+    # Docs: https://git-scm.com/docs/git-diff | https://github.com/trunk-io/plugins/tree/main/linters/git-diff-check
+    - git-diff-check
+
+  # Sourcing repos will have these configs available to applicable linters
+  exported_configs:
+    - configs:
+        # Security & Vulnerability & Secret Scanners
+        # OSV-Scanner: https://google.github.io/osv-scanner/configuration/
+        - .trunk/configs/osv-scanner.toml
+        # TruffleHog: https://docs.trufflesecurity.com/configuration-file-reference
+        - .trunk/configs/.trufflehog.yaml
+        # gitleaks: https://github.com/gitleaks/gitleaks/blob/master/README.md#configuration
+        # - .trunk/configs/.gitleaks.toml
+
+        # GitHub Actions
+        # actionlint: https://github.com/rhysd/actionlint/blob/main/docs/config.md
+        - .trunk/configs/.actionlint.yaml
+
+        # YAML
+        # yamllint: https://yamllint.readthedocs.io/en/stable/configuration.html
+        - .trunk/configs/.yamllint.yaml
+
+        # Markdown
+        # markdownlint-cli2: https://github.com/DavidAnson/markdownlint-cli2#markdownlint-cli2jsonc
+        - .trunk/configs/.markdownlint-cli2.jsonc
+
+        # Java/XML/SQL/Prisma/Shell/Tailwind
+        # prettier: https://prettier.io/docs/configuration
+        - .trunk/configs/.prettierrc.yaml
+
+        # TypeScript/JavaScript/JSX/JSON
+        # biome: https://biomejs.dev/reference/configuration/
+        - .trunk/configs/biome.jsonc
+
+        # Stylelint CSS
+        - .trunk/configs/.stylelintrc.js
+        # - .trunk/configs/.stylelintrc.yaml
+
+        # Python
+        # ruff: https://docs.astral.sh/ruff/configuration/
+        - .trunk/configs/ruff.toml
+        # pyright: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+        - .trunk/configs/pyrightconfig.json
+        # bandit: https://bandit.readthedocs.io/en/latest/config.html
+        - .trunk/configs/.bandit
+
+        # Rust
+        - .trunk/configs/clippy.toml
+        - .trunk/configs/rustfmt.toml
+
+        # C/C++
+        # (C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C#)
+        # clang-format: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+        # - .trunk/configs/.clang-format
+
+        # TOML Formatter
+        # taplo: https://taplo.tamasfe.dev/configuration/file.html
+        - .trunk/configs/taplo.toml
+
+        # Lua
+        # stylua: https://github.com/JohnnyMorganz/StyLua#configuration
+        - .trunk/configs/.stylua.toml
+
+        # Go
+        # - .trunk/configs/.golang-ci.json
+
+        # Shell scripts
+        # shellcheck: https://github.com/koalaman/shellcheck/wiki/Directive#shellcheckrc-file
+        # - .trunk/configs/.shellcheckrc
+        # shfmt: https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd
+        # - .trunk/configs/.editorconfig
+
+        # Renovate: https://docs.renovatebot.com/configuration-options/
+        # - .trunk/configs/.renovaterc.json
+
+        # SVG optimization
+        # svgo: https://github.com/svg/svgo#configuration
+        - .trunk/configs/svgo.config.mjs
+
+  # https://docs.trunk.io/code-quality/overview/deal-with-existing-issues#ignore-issues
+  # ignore:
+  #   - linters: [ALL]
+  #     paths:
+  #       - .trunk/**
+
+  definitions:
+    - name: markdownlint-cli2
+      commands:
+        # https://github.com/trunk-io/plugins/blob/main/linters/markdownlint-cli2/plugin.yaml
+        - name: lint
+          # Custom parser type defined in the trunk cli to handle markdownlint's JSON output.
+          output: regex
+          read_output_from: stderr
+          parse_regex:
+            "(?P<path>[^:]+):(?P<line>[\\d+]+)(?::(?P<col>[\\d+]+))? (?P<code>[^ ]+)
+            (?P<message>.*)\n"
+          run: markdownlint-cli2 ${target} --json
+          success_codes: [0, 1]
+          batch: true
+          cache_results: true
+        - name: fix
+          output: rewrite
+          read_output_from: stderr
+          run: markdownlint-cli2 ${target} --fix
+          success_codes: [0] # 1, 2 - https://github.com/DavidAnson/markdownlint-cli2#exit-codes
+          batch: true
+          cache_results: true
+          in_place: true
+          formatter: true
+          fix_prompt: Quick fix available
+          fix_verb: fix
+
+  # https://docs.trunk.io/code-quality/overview/linters/configure-linters#blocking-thresholds
+  # threshold:
+  #   - linters: [ALL]
+  #     level: low # none, note, low, medium, high
+
+# By sourcing this plugin, repos will enable these actions
+actions:
+  enabled:
+    - trunk-announce
+    - trunk-cache-prune
+    - trunk-upgrade-available
+    - trunk-check-pre-push
+    - trunk-fmt-pre-commit
+
+tools:
+  enabled:
+    - gh@2.89.0
+    # - grpcui@1.4.3 # ? Note: Unknown error when try intall tool
+    - gt@1.8.3

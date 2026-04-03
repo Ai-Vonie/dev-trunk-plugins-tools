@@ -1,0 +1,7 @@
+# StyLua configuration
+# Docs: https://github.com/JohnnyMorganz/StyLua
+# GitHub: https://github.com/JohnnyMorganz/StyLua
+# Configuration file: https://github.com/JohnnyMorganz/StyLua#configuration
+
+column_width               = 100
+space_after_function_names = "Always"

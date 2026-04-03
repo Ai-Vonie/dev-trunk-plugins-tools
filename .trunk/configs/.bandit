@@ -1,0 +1,4 @@
+# Bandit configuration
+# Docs: https://bandit.readthedocs.io/en/latest/
+# GitHub: https://github.com/PyCQA/bandit
+# Configuration file: https://bandit.readthedocs.io/en/latest/config.html

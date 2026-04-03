@@ -1,0 +1,35 @@
+name: Weekly Trunk Upgrade
+
+on:
+  schedule:
+    - cron: 0 8 * * 1
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  trunk_upgrade:
+    name: Upgrade Trunk Plugins
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Trunk Upgrade (Core)
+        uses: trunk-io/trunk-action/upgrade@v1.2.4
+        with:
+          arguments: -n --bleeding-edge
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: Ai-Vonie
+          branch-name: trunk-io/update-trunk-core
+
+      - name: Trunk Upgrade (Plugins)
+        uses: trunk-io/trunk-action/upgrade@v1.2.4
+        with:
+          add-paths: plugin.yaml
+          arguments: --apply-to=plugin.yaml
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: Ai-Vonie
+          branch-name: trunk-io/update-plugins

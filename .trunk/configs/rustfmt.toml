@@ -1,0 +1,17 @@
+# Rustfmt configuration
+# Docs: https://rust-lang.github.io/rustfmt
+# GitHub: https://github.com/rust-lang/rustfmt
+# Configuration file: https://rust-lang.github.io/rustfmt
+
+edition                = "2024"
+trailing_comma         = "Always"
+newline_style          = "Unix"
+wrap_comments          = true
+struct_lit_single_line = false
+lank_lines_lower_bound = 1
+lank_lines_upper_bound = 1
+# format_code_in_doc_comments = true
+# chain_width = 100
+# array_width = 100
+# fn_call_width = 100
+# ttr_fn_like_width = 100

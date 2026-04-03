@@ -1,0 +1,8 @@
+# ShellCheck configuration
+# Docs: https://www.shellcheck.net/
+# GitHub: https://github.com/koalaman/shellcheck
+# Configuration file: https://github.com/koalaman/shellcheck/wiki/Directive#shellcheckrc-file
+
+enable=all
+source-path=SCRIPTDIR
+disable=SC2154

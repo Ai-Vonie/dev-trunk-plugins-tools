@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://www.schemastore.org/prettierrc.json
+
+# Prettier configuration
+# Docs: https://prettier.io/
+# GitHub: https://github.com/prettier/prettier
+# Configuration file: https://prettier.io/docs/configuration.html
+
+printWidth: 100
+quoteProps: preserve
+proseWrap: always
+
+plugins:
+  - "@prettier/plugin-xml"
+  - prettier-plugin-java
+  - prettier-plugin-packagejson
+  - prettier-plugin-prisma
+  - prettier-plugin-sh
+  - prettier-plugin-sql
+  - prettier-plugin-tailwindcss
+
+overrides:
+  # Biome automatically formats JSON files with its own default settings
+  - files:
+      - "*.json"
+      - "*.jsonc"
+    options:
+      trailingComma: none

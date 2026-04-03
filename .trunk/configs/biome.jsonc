@@ -1,0 +1,48 @@
+{
+  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
+
+  // Biome configuration
+  // Docs: https://biomejs.dev/
+  // GitHub: https://github.com/biomejs/biome
+  // Configuration file: https://biomejs.dev/reference/configuration/
+
+  // "root": true,
+
+  "files": {
+    "includes": [
+      "**",
+      "!**/*.test.js",
+      "!**/dist/**",
+      "!**/build/**",
+      "!**/.next/**",
+      "!**/node_modules/**"
+    ]
+  },
+
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 100
+  },
+
+  "linter": {
+    "rules": {
+      "correctness": {
+        "useImportExtensions": {
+          "level": "error",
+          "options": {
+            "forceJsExtensions": true
+          }
+        },
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error"
+      }
+    }
+  },
+
+  "javascript": {
+    "formatter": {
+      "quoteProperties": "preserve",
+      "operatorLinebreak": "before"
+    }
+  }
+}

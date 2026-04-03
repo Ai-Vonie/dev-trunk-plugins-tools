@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://json.schemastore.org/clang-format-21.x.json
+
+# Clang-format configuration
+# Docs: https://clang.llvm.org/docs/ClangFormat.html
+# GitHub: https://github.com/llvm/llvm-project/tree/main/clang/tools/clang-format
+# Configuration file: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+---
+
+BasedOnStyle: Mozilla
+IndentWidth: 4
+ColumnLimit: 100
+AlwaysBreakAfterReturnType: None

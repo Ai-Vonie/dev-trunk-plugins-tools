@@ -1,0 +1,8 @@
+# Clippy configuration
+# Docs: https://doc.rust-lang.org/clippy/
+# https://rust-lang.github.io/rust-clippy/
+# GitHub: https://github.com/rust-lang/rust-clippy
+# Configuration file: https://doc.rust-lang.org/clippy/configuration.html
+# https://github.com/rust-lang/rust-clippy#configure-the-behavior-of-some-lints
+
+too-many-arguments-threshold = 5

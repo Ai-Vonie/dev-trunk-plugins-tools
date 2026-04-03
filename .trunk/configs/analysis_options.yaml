@@ -1,0 +1,6 @@
+# Dart/Flutter analysis options
+# Docs: https://dart.dev/guides/language/analysis-options
+# GitHub: https://github.com/dart-lang/linter
+# Configuration file: https://dart.dev/guides/language/analysis-options
+
+include: package:lints/recommended.yaml

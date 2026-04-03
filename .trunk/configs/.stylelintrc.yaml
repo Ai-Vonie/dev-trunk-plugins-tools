@@ -1,0 +1,8 @@
+# Stylelint configuration (YAML format)
+# Docs: https://stylelint.io/
+# GitHub: https://github.com/stylelint/stylelint
+# Configuration file: https://stylelint.io/user-guide/configure/
+
+extends:
+  - stylelint-config-standard-scss
+  - stylelint-config-prettier

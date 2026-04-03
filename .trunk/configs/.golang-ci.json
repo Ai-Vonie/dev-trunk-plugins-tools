@@ -1,0 +1,18 @@
+{
+  "$schema": "https://golangci-lint.run/jsonschema/golangci.jsonschema.json",
+  "version": "2",
+  "issues": {
+    "fix": true
+  },
+  "formatters": {
+    "exclusions": {
+      "paths": ["**/node_modules", "**/build", "**/.next", "**/out", "**/dist", "**/test"]
+    }
+  },
+  "linters": {
+    "default": "all",
+    "exclusions": {
+      "paths": ["**/node_modules", "**/build", "**/.next", "**/out", "**/dist", "**/test"]
+    }
+  }
+}
