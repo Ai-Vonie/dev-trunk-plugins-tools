@@ -245,10 +245,33 @@ lint:
         - .trunk/configs/svgo.config.mjs
 
   # https://docs.trunk.io/code-quality/overview/deal-with-existing-issues#ignore-issues
-  # ignore:
-  #   - linters: [ALL]
-  #     paths:
-  #       - .trunk/**
+  ignore:
+    - linters: [ALL]
+      paths:
+        # - .trunk/**
+
+        - .agents/**
+        - .claude-plugin/**
+        - .claude/**
+        - .codebuddy/**
+        - .codex-plugin/**
+        - .codex/**
+        - .cursor/**
+        - .gemini/**
+        - .kiro/**
+        - .opencode/**
+        - .trae/**
+
+        - LICENSE
+
+    - linters: [prettier]
+      paths:
+        - "**/*.js"
+        - "**/*.ts"
+        - "**/*.jsx"
+        - "**/*.tsx"
+        - "**/*.mjs"
+        - "**/*.cjs"
 
   definitions:
     - name: markdownlint-cli2

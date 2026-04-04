@@ -1,4 +1,4 @@
-# Dev Tools Starter
+# Dev Trunk Plugins Tools Starter
 
 Centralized linter and formatter configurations for team projects using Trunk. Provides standardized
 code quality tooling with zero-config integration.
@@ -33,7 +33,7 @@ version: 0.1
 # In consuming project's .trunk/trunk.yaml
 plugins:
   sources:
-    - id: dev-tools-starter
+    - id: dev-trunk-plugins-tools
       # Remote URL
       uri: https://github.com/Ai-Vonie/dev-trunk-plugins-tools
       ref: main
