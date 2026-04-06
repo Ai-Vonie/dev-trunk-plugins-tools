@@ -273,7 +273,14 @@ lint:
         - "**/*.mjs"
         - "**/*.cjs"
 
+  # https://docs.trunk.io/code-quality/overview/getting-started/configuration#overriding-defaults
   definitions:
+    - name: ruff
+      commands:
+        # https://github.com/trunk-io/plugins/blob/main/linters/ruff/plugin.yaml
+        - name: format
+          enabled: true
+
     - name: markdownlint-cli2
       commands:
         # https://github.com/trunk-io/plugins/blob/main/linters/markdownlint-cli2/plugin.yaml

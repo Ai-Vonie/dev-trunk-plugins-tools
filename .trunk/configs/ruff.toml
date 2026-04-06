@@ -5,6 +5,7 @@
 # Rules catalog: https://docs.astral.sh/ruff/rules/
 
 line-length = 100
+preview     = true
 
 [lint]
 select = [
@@ -88,7 +89,24 @@ select = [
     "PYI", # flake8-pyi (stub files): https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi
     "T10", # flake8-debugger: https://docs.astral.sh/ruff/rules/#flake8-debugger-t10
 ]
+
 ignore = [
+    # https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "D206",
+    "D300",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "Q004",
+    "COM812",
+    "COM819",
+    # "ISC002",
+
     # "D100",
     # "D101",
     # "D102",
