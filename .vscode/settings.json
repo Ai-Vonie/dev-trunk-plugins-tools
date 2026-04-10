@@ -11,6 +11,8 @@
   },
   "files.watcherExclude": {
     "**/node_modules/*/**": true,
+    "**/__pycache__/**": true,
+    "**/.ruff_cache/**": true,
 
     "**/.trunk/*actions/": true,
     "**/.trunk/*logs/": true,

@@ -16,7 +16,7 @@ select = [
     "W", # pycodestyle warnings
 
     # ─────────────────────── Imports
-    "I",   # isort: https://docs.astral.sh/ruff/rules/#isort-i
+    # "I",   # isort: https://docs.astral.sh/ruff/rules/#isort-i
     "ICN", # flake8-import-conventions: https://docs.astral.sh/ruff/rules/#flake8-import-conventions-icn
     "TID", # flake8-tidy-imports: https://docs.astral.sh/ruff/rules/#flake8-tidy-imports-tid
 
@@ -124,11 +124,8 @@ ignore = [
 line-ending = "lf"
 
 [lint.isort]
-case-sensitive             = true
-combine-as-imports         = true
-force-sort-within-sections = false
-force-wrap-aliases         = true
-order-by-type              = true
+combine-as-imports = true
+# force-wrap-aliases = true
 
 [lint.pydocstyle]
 convention = "google"

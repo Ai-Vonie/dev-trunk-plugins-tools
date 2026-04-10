@@ -106,7 +106,8 @@ lint:
 
     # Python
     # Docs: https://docs.astral.sh/ruff/ | https://github.com/astral-sh/ruff
-    - ruff@0.15.8
+    - ruff@0.15.8:
+        commands: [lint, fix_format]
     # Docs: https://microsoft.github.io/pyright/ | https://github.com/microsoft/pyright
     - pyright@1.1.408
     # Docs: https://bandit.readthedocs.io/en/latest/ | https://github.com/PyCQA/bandit
@@ -279,12 +280,27 @@ lint:
       commands:
         # https://github.com/trunk-io/plugins/blob/main/linters/ruff/plugin.yaml
         - name: format
-          enabled: true
+          enabled: false
+
+        - name: fix_format
+          files: [python, python-interface]
+          output: rewrite
+          run:
+            python -c "import subprocess; subprocess.run(['ruff', 'check', '--fix', '--exit-zero',
+            '${target}']); subprocess.run(['ruff', 'format', '${target}']);"
+          success_codes: [0]
+          batch: true
+          cache_results: true
+          in_place: true
+          formatter: true
+          fix_prompt: Apply safe Ruff fixes and formatting
+          fix_verb: fix
 
     - name: markdownlint-cli2
       commands:
         # https://github.com/trunk-io/plugins/blob/main/linters/markdownlint-cli2/plugin.yaml
         - name: lint
+          files: [markdown]
           # Custom parser type defined in the trunk cli to handle markdownlint's JSON output.
           output: regex
           read_output_from: stderr
@@ -295,7 +311,9 @@ lint:
           success_codes: [0, 1]
           batch: true
           cache_results: true
+
         - name: fix
+          files: [markdown]
           output: rewrite
           read_output_from: stderr
           run: markdownlint-cli2 ${target} --fix
