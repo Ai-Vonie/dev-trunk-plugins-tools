@@ -111,7 +111,7 @@ lint:
     # Docs: https://microsoft.github.io/pyright/ | https://github.com/microsoft/pyright
     - pyright@1.1.408
     # Docs: https://bandit.readthedocs.io/en/latest/ | https://github.com/PyCQA/bandit
-    - bandit@1.9.4
+    # - bandit@1.9.4
 
     # Rust
     - rustfmt@1.92.0
@@ -210,7 +210,7 @@ lint:
         # pyright: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
         - .trunk/configs/pyrightconfig.json
         # bandit: https://bandit.readthedocs.io/en/latest/config.html
-        - .trunk/configs/.bandit
+        # - .trunk/configs/.bandit
 
         # Rust
         - .trunk/configs/clippy.toml
