@@ -4,14 +4,14 @@ version: 0.1
 
 # This file controls the behavior of Trunk: https://docs.trunk.io/cli
 cli:
-  version: 1.25.0
+  version: 1.25.1-beta.9
 
 # Trunk provides extensibility via plugins. (https://docs.trunk.io/plugins)
 plugins:
   sources:
     - id: trunk
       uri: https://github.com/trunk-io/plugins
-      ref: v1.7.6
+      ref: v1.10.2
 
     - id: configs
       local: .
