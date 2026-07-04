@@ -355,7 +355,7 @@ package-lock.json text eol=lf -diff
 pnpm-lock.yaml    text eol=lf -diff
 .prettierrc       text
 yarn.lock         text -diff
-*.yaml            text
+*.yaml            text eol=lf
 *.yml             text
 browserslist      text
 Makefile          text
